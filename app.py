@@ -206,7 +206,7 @@ if st.button("🚀 가격 예측하기"):
     # --------------------
     # 중요도 분석
     # --------------------
-    st.header("📊 가격 예측 변수 중요도")
+    st.header("📊 Feature Importance Details")
 
     importance_df = pd.DataFrame({
         "Feature": feature_columns,
@@ -271,7 +271,7 @@ name_map = {
 }
 
 grouped_df["Feature"] = grouped_df["Feature"].replace(name_map)
-    fig, ax = plt.subplots(figsize=(8, 5))
+fig, ax = plt.subplots(figsize=(8, 5))
 
 ax.barh(
     grouped_df["Feature"],
