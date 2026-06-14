@@ -256,43 +256,43 @@ if st.button("🚀 가격 예측하기"):
         "Importance (%)",
         ascending=False
     )
-# 영어 이름으로 변경 (Streamlit Cloud 한글 깨짐 방지)
-
-name_map = {
-    "차량나이": "Vehicle Age",
-    "주행거리": "Mileage",
-    "연비": "Fuel Efficiency",
-    "배기량": "Engine Size",
-    "최대출력": "Max Power",
-    "좌석수": "Seats",
-    "브랜드": "Brand",
-    "연료종류": "Fuel Type",
-    "변속기": "Transmission"
-}
-
-grouped_df["Feature"] = grouped_df["Feature"].replace(name_map)
-fig, ax = plt.subplots(figsize=(8, 5))
-
-ax.barh(
-    grouped_df["Feature"],
-    grouped_df["Importance (%)"]
-)
-
-ax.set_xlabel("Importance (%)")
-ax.set_title("Feature Importance")
-ax.invert_yaxis()
-
-st.pyplot(fig)
-
+    # 영어 이름으로 변경 (Streamlit Cloud 한글 깨짐 방지)
+    
+    name_map = {
+        "차량나이": "Vehicle Age",
+        "주행거리": "Mileage",
+        "연비": "Fuel Efficiency",
+        "배기량": "Engine Size",
+        "최대출력": "Max Power",
+        "좌석수": "Seats",
+        "브랜드": "Brand",
+        "연료종류": "Fuel Type",
+        "변속기": "Transmission"
+    }
+    
+    grouped_df["Feature"] = grouped_df["Feature"].replace(name_map)
+    fig, ax = plt.subplots(figsize=(8, 5))
+    
+    ax.barh(
+        grouped_df["Feature"],
+        grouped_df["Importance (%)"]
+    )
+    
+    ax.set_xlabel("Importance (%)")
+    ax.set_title("Feature Importance")
+    ax.invert_yaxis()
+    
+    st.pyplot(fig)
+    
     display_df = grouped_df.copy()
     display_df["Importance (%)"] = (
         display_df["Importance (%)"]
         .round(2)
     )
-
+    
     st.dataframe(
         display_df[
             ["Feature", "Importance (%)"]
         ],
-        use_container_width=True
-    )
+            use_container_width=True
+        )
